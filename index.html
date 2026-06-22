@@ -37,7 +37,8 @@
   /* Hero */
   .hero{position:relative;overflow:hidden;color:#fff;background:radial-gradient(700px 320px at 80% -10%,rgba(55,133,250,.55),transparent 60%),linear-gradient(160deg,#0A1A3F,#10245A 60%,#0A1A3F)}
   .hero::before{content:"";position:absolute;inset:0;opacity:.09;pointer-events:none;background-image:radial-gradient(circle at 50% 38%,transparent 70px,rgba(255,255,255,.6) 70px 72px,transparent 73px)}
-  .hero-in{position:relative;padding:30px 0 34px;text-align:center}
+  .hero-in{position:relative;padding:30px 0 34px;text-align:center;display:flex;flex-direction:column}
+  .hero-art{order:-1;display:flex;justify-content:center}
   .eyebrow{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--lime);border:1px solid rgba(204,255,0,.4);border-radius:999px;padding:6px 13px;margin-bottom:14px}
   .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--lime);animation:pulse 1.8s infinite}
   @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(204,255,0,.6)}70%{box-shadow:0 0 0 8px rgba(204,255,0,0)}100%{box-shadow:0 0 0 0 rgba(204,255,0,0)}}
@@ -183,6 +184,28 @@
     .tl{grid-template-columns:1fr;gap:2px}
   }
   @media(max-width:380px){.svc{width:calc(50% - 5px)}}
+
+  /* ===== Desktop / wide screens ===== */
+  @media(min-width:900px){
+    :root{--maxw:1080px}
+    .nav-in{height:66px}
+    .nav-in .logo{height:30px}
+    section{padding:66px 0}
+    .hero-in{display:grid;grid-template-columns:1.12fr .88fr;align-items:center;gap:44px;text-align:left;padding:64px 0 70px}
+    .hero-art{order:0}
+    .hero .mascot{width:330px;margin:0 auto}
+    .hero h1{font-size:5.2rem}
+    .hero p.lead{margin:14px 0 18px;max-width:42ch;font-size:1.12rem}
+    .hero .eyebrow{margin-bottom:18px}
+    .hero .prizepool{margin-bottom:22px}
+    .cta-row{justify-content:flex-start}
+    .clock{margin:24px 0 6px}
+    .sec-head{max-width:760px}
+    .svc{width:150px}
+    .svc .pic{height:64px}.svc .pic img{max-height:64px}
+    .podium{max-width:620px}
+    .rules-grid,.acc,.podium{margin-left:auto;margin-right:auto}
+  }
   @media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -198,25 +221,29 @@
 <!-- HERO -->
 <section class="hero">
   <div class="wrap hero-in">
-    <span class="eyebrow"><span class="dot"></span>FIFA World Cup 2026 · Cash Rewards</span>
-    <img class="mascot" src="https://raw.githubusercontent.com/TradeCard-store/TradeCard/main/Utility%20bills%20IP%20TC.svg" alt="TradeCard mascot playing football">
-    <h1 class="display">Trade<span class="kick">Kick</span></h1>
-    <p class="lead">Pay your <b>eSIM</b> &amp; <b>utility bills</b> through TradeCard during the World Cup. The <b>Top 10 spenders</b> win real cash to their wallet.</p>
-    <div class="prizepool"><span class="num">₦30,000</span><span class="lbl">Top prize<br>Top 10 win cash</span></div>
-    <div class="cta-row">
-      <a class="btn btn-primary" href="https://tradecard.go.link/?adj_t=1ush3q9i&adj_label=sell">Start trading →</a>
-      <a class="btn btn-ghost" href="https://tradecard.go.link/?adj_t=1ush3q9i&adj_label=couponList">View coupons</a>
+    <div class="hero-copy">
+      <span class="eyebrow"><span class="dot"></span>Spend &amp; Win Real Cash</span>
+      <h1 class="display">Trade<span class="kick">Kick</span></h1>
+      <p class="lead">Pay your <b>eSIM</b> &amp; <b>utility bills</b> through TradeCard during the World Cup. The <b>Top 10 spenders</b> win real cash to their wallet.</p>
+      <div class="prizepool"><span class="num">₦30,000</span><span class="lbl">Top prize<br>Top 10 win cash</span></div>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://tradecard.go.link/?adj_t=1ush3q9i&adj_label=sell">Start trading →</a>
+        <a class="btn btn-ghost" href="https://tradecard.go.link/?adj_t=1ush3q9i&adj_label=couponList">View coupons</a>
+      </div>
+      <div class="clock" id="clock" aria-label="Time remaining">
+        <div class="unit"><div class="v" id="dd">00</div><div class="k">Days</div></div>
+        <div class="sep">:</div>
+        <div class="unit"><div class="v" id="hh">00</div><div class="k">Hrs</div></div>
+        <div class="sep">:</div>
+        <div class="unit"><div class="v" id="mm">00</div><div class="k">Min</div></div>
+        <div class="sep">:</div>
+        <div class="unit"><div class="v" id="ss">00</div><div class="k">Sec</div></div>
+      </div>
+      <span class="clock-cap">Evaluation period · 11 June – 19 July 2026 · ends 23:59 WAT</span>
     </div>
-    <div class="clock" id="clock" aria-label="Time remaining">
-      <div class="unit"><div class="v" id="dd">00</div><div class="k">Days</div></div>
-      <div class="sep">:</div>
-      <div class="unit"><div class="v" id="hh">00</div><div class="k">Hrs</div></div>
-      <div class="sep">:</div>
-      <div class="unit"><div class="v" id="mm">00</div><div class="k">Min</div></div>
-      <div class="sep">:</div>
-      <div class="unit"><div class="v" id="ss">00</div><div class="k">Sec</div></div>
+    <div class="hero-art">
+      <img class="mascot" src="https://raw.githubusercontent.com/TradeCard-store/TradeCard/main/Utility%20bills%20IP%20TC.svg" alt="TradeCard mascot playing football">
     </div>
-    <span class="clock-cap">Evaluation period · 11 June – 19 July 2026 · ends 23:59 WAT</span>
   </div>
 </section>
 
